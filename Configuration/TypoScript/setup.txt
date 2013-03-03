@@ -1,0 +1,30 @@
+plugin.tx_imprint {
+	view {
+		templateRootPath = {$plugin.tx_imprint.view.templateRootPath}
+		partialRootPath = {$plugin.tx_imprint.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_imprint.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$plugin.tx_imprint.persistence.storagePid}
+	}
+}
+
+plugin.tx_imprint._CSS_DEFAULT_STYLE (
+	input.f3-form-error {
+		background-color:#FF9F9F;
+		border: 1px #FF0000 solid;
+	}
+
+	.tx-imprint table {
+		border-collapse:separate;
+		border-spacing:10px;
+	}
+
+	.tx-imprint table th {
+		font-weight:bold;
+	}
+
+	.tx-imprint table td {
+		vertical-align:top;
+	}
+)

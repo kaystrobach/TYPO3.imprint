@@ -1,0 +1,150 @@
+{namespace imprint = Tx_Imprint_ViewHelpers}
+
+<table class="screen2" xmlns:f="http://www.w3.org/1999/html">
+	<tr>
+		<th>
+			Anschrift
+		</th>
+		<td>
+			{settings.generalNameFirstLine}<br>
+			{settings.generalNameSecondLine}<br>
+			{settings.generalZipCode} {settings.generalCity}<br>
+			{settings.generalStreet}<br>
+			{settings.generalPhone}<br>
+			{settings.generalFax}<br>
+			<f:link.email email="{settings.generalEmail}">{settings.generalEmail}</f:link.email><br>
+			<f:link.external uri="{settings.generalUri}">{settings.generalUri}</f:link.external><br>
+		</td>
+	</tr>
+	<f:if condition="{imprint:count(subject:settings.authorizedToRepresent)}">
+		<tr>
+			<th>
+				Vertretungsberechtigte
+			</th>
+			<td>
+				<ul>
+					<f:for each="{settings.authorizedToRepresent}" as="person">
+						<li>
+							<f:link.email email="{person.person.email}">{person.person.name}</f:link.email>
+							<f:if condition="{person.person.phone}">
+								<br>
+								<a href="tel:{person.person.phone}">{person.person.phone}</a>
+							</f:if>
+						</li>
+					</f:for>
+				</ul>
+				{settings.authorizedToRepresentText}
+			</td>
+		</tr>
+	</f:if>
+	<f:if condition="{imprint:count(subject:settings.responsiblePerson)}">
+		<tr>
+			<th>
+				Verantwortlicher Personen
+			</th>
+			<td>
+				<ul>
+					<f:for each="{settings.responsiblePerson}" as="person">
+						<li>
+							<f:link.email email="{person.person.email}">{person.person.name}</f:link.email>
+							<f:if condition="{person.person.phone}">
+								<br>
+								<a href="tel:{person.person.phone}">{person.person.phone}</a>
+							</f:if>
+						</li>
+					</f:for>
+				</ul>
+				{settings.responsiblePersonText}
+			</td>
+		</tr>
+	</f:if>
+	<f:if condition="{imprint:count(subject:settings.contentCreators)}">
+		<tr>
+			<th>
+				Redakteure
+			</th>
+			<td>
+				<ul>
+					<f:for each="{settings.contentCreators}" as="person">
+						<li>
+							<f:link.email email="{person.person.email}">{person.person.name}</f:link.email>
+							<f:if condition="{person.person.phone}">
+								<br>
+								<a href="tel:{person.person.phone}">{person.person.phone}</a>
+							</f:if>
+						</li>
+					</f:for>
+				</ul>
+				{settings.contentCreatorsText}
+			</td>
+		</tr>
+	</f:if>
+	<f:if condition="{settings.taxNumber}">
+		<tr>
+			<th>
+				Umsatzsteueridentnummer
+			</th>
+			<td>
+				{settings.taxNumber}
+			</td>
+		</tr>
+	</f:if>
+	<f:if condition="{settings.disclaimer}">
+		<tr>
+			<th>
+				Beaufsichtigende Behörde
+			</th>
+			<td>
+				{settings.supervisingAuthority}
+			</td>
+		</tr>
+	</f:if>
+	<f:if condition="{settings.disclaimer}">
+		<tr>
+			<th>
+				Disclaimer
+			</th>
+			<td>
+				Wir sind intensiv bemüht, stets richtige und vollständige Informationen auf dieser Webseite zur Verfügung zu stellen.
+				Wir schließen jedoch jede Haftung oder Garantie für die Aktualität, Richtigkeit oder Vollständigkeit der bereitgestellten Informationen aus.
+				Dies gilt auch für alle Verbindungen zu externen Seiten, auf die diese Website direkt oder indirekt verweist.
+				Da die Inhalte der verlinkten Seiten außerhalb unseres Einflussbereiches liegt, sind wir für die Inhalte von verlinkten Seiten nicht verantwortlich.
+			</td>
+		</tr>
+	</f:if>
+	<f:if condition="{settings.copyright}">
+		<tr>
+			<th>
+				Copyright
+			</th>
+			<td>
+				Alle Inhalte dieses Internetauftrittes unterliegen dem Urheberrecht.
+				Bitte kontaktieren Sie uns, bevor Sie Inhalte (Texte, Bilder, Medien) von unserer Internetseite verwenden.
+				Jegliche Nutzung ohne Zustimmung der jeweiligen Rechteinhaber ist rechtswidrig.
+			</td>
+		</tr>
+	</f:if>
+	<f:if condition="{settings.privacy}">
+		<h3>
+			Datenschutz
+		</h3>
+		<p>
+			Alle gesammelten Daten werden nur zur Verfügungstellung dieses Dienstes genutzt.
+			Es werden keine Daten ohne Einverständnis des jeweiligen Nutzers an Dritte weitergegeben.
+		</p>
+		<p>
+			Die Nutzungsstatistiken werden mit dem OpenSourceTool Piwik erfasst, um deine Privatsphäre zu schützen werden die IP-Adressen anonymisiert (last byte).
+			Sie können durch Einstellungen im Browser oder entsprechende Plugins die Aufzeichnung der Nutzerstatistiken unterbinden.
+		</p>
+	</f:if>
+	<f:if condition="">
+		<tr>
+			<th>
+				Freitext
+			</th>
+			<td>
+				<f:format.html>{settings.custom}</f:format.html>
+			</td>
+		</tr>
+	</f:if>
+</table>

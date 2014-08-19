@@ -6,20 +6,22 @@
 			Anschrift
 		</th>
 		<td>
-			{settings.generalNameFirstLine}<br>
-			{settings.generalNameSecondLine}<br>
-			{settings.generalZipCode} {settings.generalCity}<br>
-			{settings.generalStreet}<br>
-			{settings.generalPhone}<br>
-			{settings.generalFax}<br>
-			<f:link.email email="{settings.generalEmail}">{settings.generalEmail}</f:link.email><br>
-			<f:link.external uri="{settings.generalUri}">{settings.generalUri}</f:link.external><br>
+			<p class="h-card">
+				<span class="p-name">{settings.generalNameFirstLine}<br>
+					{settings.generalNameSecondLine}</span><br>
+				<span class="p-postal-code">{settings.generalZipCode}</span> <span class="p-locality">{settings.generalCity}</span><br>
+				<span class="p-street-address">{settings.generalStreet}</span><br>
+				<span class="p-tel">{settings.generalPhone}</span><br>
+				<span class="p-tel-fax">{settings.generalFax}</span><br>
+				<f:link.email email="{settings.generalEmail}" class="u-email">{settings.generalEmail}</f:link.email><br>
+				<f:link.external uri="{settings.generalUri}" class="u-url">{settings.generalUri}</f:link.external><br>
+			</p>
 		</td>
 	</tr>
 	<f:if condition="{imprint:count(subject:settings.authorizedToRepresent)}">
 		<tr>
 			<th>
-				Vertretungsberechtigte
+				Vertretungsberechtigte(r)
 			</th>
 			<td>
 				<ul>
@@ -40,7 +42,7 @@
 	<f:if condition="{imprint:count(subject:settings.responsiblePerson)}">
 		<tr>
 			<th>
-				Verantwortlicher Personen
+				Verantwortliche Person(en)
 			</th>
 			<td>
 				<ul>
